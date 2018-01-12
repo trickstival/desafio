@@ -60,10 +60,10 @@ export default {
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
         </h6>
         <div class="row main-content">
-            <div class="col-lg-5 offset-lg-1">
+            <div class="col-lg-5 offset-lg-2">
                 <st-tabela-participantes :data="data" slot="left" />
             </div>
-            <div class="col-lg-5 offset-lg-1 offset-sm-3">
+            <div class="col-lg-4 offset-lg-1 offset-sm-3">
                 <div class="chart-wrapper">
                     <st-grafico-participantes :chartData="chartData" :options="chartOptions" slot="right" />
                 </div>
