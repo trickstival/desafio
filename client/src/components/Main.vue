@@ -17,7 +17,7 @@ export default {
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
         </h6>
         <div class="row">
-            <div class="col-lg-5 offset-1">
+            <div class="col-lg-5 offset-lg-1">
                 <st-tabela-participantes slot="left" />
             </div>
         </div>
@@ -26,7 +26,7 @@ export default {
 
 <style scoped>
 div.container-main {
-    height: 72vh;
+    min-height: 72vh;
     padding-top: 7vh;
 }
 h6.lblDescricaoDados {

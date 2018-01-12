@@ -21,6 +21,19 @@ if (config.dev.openBrowser) {
   console.log(' Browser will open when build is ready.\n')
 }
 
+
+const url_avoid_cors = 'http://localhost:3000/employees'
+
+// Proxy to avoid cors
+var request = require('request')
+app.get('/employees', (req, res) => 
+  req.pipe(request(url_avoid_cors)).pipe(res)
+)
+
+app.post('/employees', (req, res) => 
+  req.pipe(request(url_avoid_cors)).pipe(res)
+)
+
 var compiler = webpack(webpackConfig)
 
 // Define HTTP proxies to your custom API backend

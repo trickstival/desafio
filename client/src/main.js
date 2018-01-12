@@ -13,6 +13,10 @@ require(`quasar/dist/quasar.${__THEME}.css`)
 import Vue from 'vue'
 import Quasar from 'quasar'
 import router from './router'
+import axios from 'axios'
+import VueAxios from 'vue-axios'
+ 
+Vue.use(VueAxios, axios)
 
 Vue.config.productionTip = false
 Vue.use(Quasar) // Install Quasar Framework

@@ -11,11 +11,15 @@
     "build": "node build/script.build.js"
   },
   "dependencies": {
+    "axios": "^0.17.1",
     "babel-runtime": "^6.25.0",
     "quasar-extras": "0.x",
     "quasar-framework": "^0.14.4",
+    "request": "^2.83.0",
     "vue": "^2.5.0",
-    "vue-router": "^3.0.1"
+    "vue-axios": "^2.0.2",
+    "vue-router": "^3.0.1",
+    "vue-the-mask": "^0.11.1"
   },
   "devDependencies": {
     "autoprefixer": "^6.4.0",

@@ -1,11 +1,43 @@
 <script>
 import { QBtn } from 'quasar'
+import { TheMask } from 'vue-the-mask'
+import { mask } from 'vue-the-mask'
+import Validador from './Validador'
+import { EventBus } from '../../EventBus'
 
 export default {
   components: {
-      QBtn
+      QBtn,
+      TheMask
+  },
+  directives: {
+      mask
+  },
+  data(){
+      return {
+          txtNome: '',
+          txtSobrenome: '',
+          txtParticipacao: '',
+          shouldWatch: true,
+          myMask: '###.##'
+      }
+  },
+  methods: {
+      cadastrar(){
+          let bundle = {
+            nome: this.txtNome, sobrenome: this.txtSobrenome, participacao: this.txtParticipacao
+          }
+
+          if(Validador.validate(bundle))
+            this.axios.post('http://localhost:8080/employees', bundle).then(
+                response => {
+                    if(response.status == 200) EventBus.$emit('novoRegistro')
+            })
+      }
   }
 }
+
+
 </script>
 
 <template>
@@ -14,18 +46,18 @@ export default {
           <div class="col-xs-10 offset-1">
               <div class="row justify-center sm-gutter">
                 <div class="col-lg-3">
-                    <input placeholder="Nome" type="text" class="txtSend">
+                    <input v-model="txtNome" placeholder="Nome" type="text" class="txtSend">
                 </div>
                 <div class="col-lg-3">
-                    <input placeholder="Sobrenome" type="text" class="txtSend">
+                    <input v-model="txtSobrenome" placeholder="Sobrenome" type="text" class="txtSend">
                 </div>
                 <div class="col-lg-3">
-                    <input placeholder="Participação" type="text" class="txtSend">
+                    <the-mask placeholder="Participação (%)" max="100" :mask="myMask" v-model="txtParticipacao" class="txtSend" />
                 </div>
                 <div class="col-lg-2">
                     <div class="btn-enviar-wrapper">
                         <div class="col-lg-10 lg-offset-1">
-                            <q-btn outline class="btn-enviar">
+                            <q-btn @click="cadastrar()" outline class="btn-enviar">
                                 Enviar
                             </q-btn>
                         </div>
@@ -33,8 +65,6 @@ export default {
                 </div>
               </div>
           </div>
-
-
       </div>
   </section>
 </template>

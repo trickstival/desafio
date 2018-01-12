@@ -1,22 +1,25 @@
 export default [
-    {
-        label: '',
-        field: 'enumeration',
-        width: '5px'
-    },
+    // {
+    //     label: '',
+    //     field: 'enumeration',
+    //     width: '5px'
+    // },
     {
         label: 'Nome',
-        field: 'name',
+        field: 'nome',
         width: '100px'
     },
     {
         label: 'Sobrenome',
-        field: 'lastname',
+        field: 'sobrenome',
         width: '100px'
     },
     {
         label: 'Participação',
-        field: 'participation',
-        width: '100px'
+        field: 'participacao',
+        width: '100px',
+        format(val, row){
+            return val + '%'
+        }
     }
 ]

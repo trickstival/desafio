@@ -8,8 +8,16 @@ export default {
   },
   data(){
       return {
-          colunas: Colunas
+          colunas: Colunas,
+          data: []
       }
+  },
+  created(){
+    let self = this
+    this.axios.get('http://localhost:8080/employees').then(response => {
+      self.data = response.data
+      console.log('resposta', response.data)
+    })
   }
 }
 </script>
@@ -17,6 +25,7 @@ export default {
 <template>
   <q-data-table
     :columns="colunas"
+    :data="data"
   >
 
   </q-data-table>
