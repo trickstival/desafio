@@ -15,6 +15,9 @@ import Quasar from 'quasar'
 import router from './router'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import VueChart from 'vue-chart-js'
+ 
+Vue.use(VueChart)
  
 Vue.use(VueAxios, axios)
 

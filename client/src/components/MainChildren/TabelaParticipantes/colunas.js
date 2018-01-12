@@ -2,7 +2,7 @@ export default [
     {
         label: '',
         field: 'enumeration',
-        width: '10px'
+        width: '15px'
     },
     {
         label: 'Nome',

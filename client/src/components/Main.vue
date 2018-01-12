@@ -1,27 +1,48 @@
 <script>
 import StTabelaParticipantes from '@/MainChildren/TabelaParticipantes.vue'
+import StGraficoParticipantes from '@/MainChildren/GraficoParticipantes.vue'
 import { EventBus } from '../EventBus'
+import colorArrayGenerator from './utils/colorArrayGenerator'
 
 export default {
     components: {
-        StTabelaParticipantes
+        StTabelaParticipantes,
+        StGraficoParticipantes
     },
     data(){
         return {
-            data: []
+            data: [],
+            chartOptions: {
+                responsive: false
+            }
         }
     },
     methods: {
-    recarregar(){
-        let self = this
-        this.axios.get('http://localhost:8080/employees').then(response => {
-            for(let i=0;i<response.data.length;i++){
-                response.data[i].enumeration = i
+        recarregar(){
+            let self = this
+            this.axios.get('http://localhost:8080/employees').then(response => {
+                for(let i=0;i<response.data.length;i++){
+                    response.data[i].enumeration = i
+                }
+                self.data = response.data
+                console.log('resposta', response.data)
+            })
+        }
+    },
+    computed: {
+        chartData(){
+
+
+            return {
+                labels: this.data.map(item => item.nome),
+                datasets: [
+                    {
+                        backgroundColor: colorArrayGenerator(this.data.length),
+                        data: this.data.map(item => item.participacao)
+                    }
+                ]
             }
-            self.data = response.data
-            console.log('resposta', response.data)
-        })
-    }
+        }
     },
     created(){
         this.recarregar()
@@ -42,11 +63,19 @@ export default {
             <div class="col-lg-5 offset-lg-1">
                 <st-tabela-participantes :data="data" slot="left" />
             </div>
+            <div class="col-lg-5 offset-lg-1 offset-sm-3">
+                <div class="chart-wrapper">
+                    <st-grafico-participantes :chartData="chartData" :options="chartOptions" slot="right" />
+                </div>
+            </div>
         </div>
   </div>
 </template>
 
 <style scoped>
+div.chart-wrapper{
+    width: 400px;
+}
 div.main-content{
     margin-top: 5vh;
 }

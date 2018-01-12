@@ -1,13 +1,10 @@
 <script>
 import Components from './TabelaParticipantes/componentImports'
 import Colunas from './TabelaParticipantes/colunas'
+import mixinData from './mixinData'
 
 export default {
-  props: {
-    data: {
-      type: Array
-    }
-  },
+  mixins: [mixinData],
   components: {
       ...Components
   },
