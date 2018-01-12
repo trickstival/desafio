@@ -33,6 +33,17 @@ module.exports = class MongoController {
         })
     }
 
+    getEmployees(){
+        let loader = new ResultLoader(() => 
+
+            this.db.collection('participantes').find({}).toArray((err, participantes) => {
+                loader.onResult(participantes)
+            })
+        )
+
+        return loader
+    }
+
     criarColecoes(db){
         console.log('Estabelecendo coleções')
 
@@ -44,7 +55,7 @@ module.exports = class MongoController {
     }
 }
 
-module.exports.ResultLoader = class ResultLoader {
+class ResultLoader {
 
     constructor(cb){
         this.cb = cb

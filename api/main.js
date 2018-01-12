@@ -28,6 +28,16 @@ app.post('/employees', (req, res) => {
     validate.validate(json, controller)
 })
 
+app.get('/employees', (req, res) => {
+    let loader = controller.getEmployees()
+
+    loader.onResult = employees => {
+        res.send(JSON.stringify(employees))
+    }
+
+    loader.do()
+})
+
 
 controller.onReady = () => {   
     
