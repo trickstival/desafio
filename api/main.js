@@ -24,7 +24,7 @@ app.post('/employees', (req, res) => {
             controller.novoEmployee(employeeValido)
             res.send(msg)
         }
-        else res.status(500).send(msg)
+        else res.status(500).send({msg})
     }
 
     validate.validate(json, controller)
