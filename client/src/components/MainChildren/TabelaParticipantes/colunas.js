@@ -17,7 +17,7 @@ export default [
     {
         label: 'Participação',
         field: 'participacao',
-        width: '100px',
+        width: '60px',
         format(val, row){
             return val + '%'
         }

@@ -74,7 +74,7 @@ export default {
 
 <style scoped>
 div.chart-wrapper{
-    width: 400px;
+    width: 360px;
 }
 div.main-content{
     margin-top: 5vh;

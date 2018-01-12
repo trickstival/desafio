@@ -88,7 +88,8 @@ input.txtSend {
     border-radius: 5px;
     border-color: lightblue;
     border-style: solid;
-    font-size: 22px;
+    font-size: 18px;
+    font-weight: 200;
     padding: 5px;
 }
 .btn-enviar{

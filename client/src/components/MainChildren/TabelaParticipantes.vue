@@ -24,3 +24,10 @@ export default {
 
   </q-data-table>
 </template>
+
+<style>
+.q-table{
+  font-weight: 300;
+  line-height: 1.5em;
+}
+</style>
