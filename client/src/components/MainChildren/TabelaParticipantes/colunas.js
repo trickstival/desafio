@@ -1,9 +1,9 @@
 export default [
-    // {
-    //     label: '',
-    //     field: 'enumeration',
-    //     width: '5px'
-    // },
+    {
+        label: '',
+        field: 'enumeration',
+        width: '10px'
+    },
     {
         label: 'Nome',
         field: 'nome',

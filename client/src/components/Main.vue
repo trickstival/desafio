@@ -16,7 +16,7 @@ export default {
         <h6 class="text-center lblDescricaoDados">
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
         </h6>
-        <div class="row">
+        <div class="row main-content">
             <div class="col-lg-5 offset-lg-1">
                 <st-tabela-participantes slot="left" />
             </div>
@@ -25,6 +25,9 @@ export default {
 </template>
 
 <style scoped>
+div.main-content{
+    margin-top: 5vh;
+}
 div.container-main {
     min-height: 72vh;
     padding-top: 7vh;

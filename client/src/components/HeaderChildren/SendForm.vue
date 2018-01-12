@@ -25,14 +25,22 @@ export default {
   methods: {
       cadastrar(){
           let bundle = {
-            nome: this.txtNome, sobrenome: this.txtSobrenome, participacao: this.txtParticipacao
+            nome: this.txtNome, sobrenome: this.txtSobrenome, participacao: document.getElementById('txtPart').value
           }
 
           if(Validador.validate(bundle))
             this.axios.post('http://localhost:8080/employees', bundle).then(
                 response => {
-                    if(response.status == 200) EventBus.$emit('novoRegistro')
+                    if(response.status == 200){
+                         EventBus.$emit('novoRegistro')
+                         this.limpar()
+                    }
             })
+      },
+      limpar(){
+          this.txtNome = ''
+          this.txtSobrenome = ''
+          this.txtParticipacao = ''
       }
   }
 }
@@ -52,7 +60,7 @@ export default {
                     <input v-model="txtSobrenome" placeholder="Sobrenome" type="text" class="txtSend">
                 </div>
                 <div class="col-lg-3">
-                    <the-mask placeholder="Participação (%)" max="100" :mask="myMask" v-model="txtParticipacao" class="txtSend" />
+                    <the-mask id="txtPart" placeholder="Participação (%)" max="100" :mask="myMask" v-model="txtParticipacao" class="txtSend" />
                 </div>
                 <div class="col-lg-2">
                     <div class="btn-enviar-wrapper">

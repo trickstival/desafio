@@ -17,7 +17,8 @@ module.exports = {
             let camposPreenchidos = json.nome && json.sobrenome && json.participacao && isParticipacaoNumerica
 
             if(camposPreenchidos){
-                this.onResult(true, 'Tudo ok!')
+                json.participacao = parseFloat(json.participacao).toFixed(2)
+                this.onResult(json, 'Tudo ok!')
             } else this.onResult(false)
         })
     },

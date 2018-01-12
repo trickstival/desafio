@@ -19,7 +19,7 @@ app.post('/employees', (req, res) => {
 
     validate.onResult = (employeeValido, msg = 'Erro! Preencha todos os campos!') => {
         if(employeeValido){
-            controller.novoEmployee(json)
+            controller.novoEmployee(employeeValido)
             res.send(msg)
         }
         else res.status(500).send(msg)
