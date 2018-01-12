@@ -1,19 +1,18 @@
-# Quasar App
+# Desafio
 
-> A Quasar project
+> Desafio de participação de usuários
 
 ## Build Setup
 
 ``` bash
-# install dependencies
+# Instalar dependências
 $ npm install
 
-# serve with hot reload at localhost:8080
+# Servir no localhost:8080
 $ quasar dev
 
-# build for production with minification
+# Gerar o build na pasta dist
 $ quasar build
-
-# lint code
-$ quasar lint
 ```
+
+## O comando quasar dev só irá funcionar adequadamente se o quasar-cli estiver instalado e a porta de listen do express no arquivo api/main.js for alterada para 3000

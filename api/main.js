@@ -2,11 +2,13 @@ const express = require('express')
       app = express(),
       MongoController = require('./mongo/MongoController'),
       controller = new MongoController(),
-      validate = require('./utils/validate')
+      validate = require('./utils/validate'),
+      path = require('path')
 
 app.use(require('body-parser').json())
+app.use(express.static('../client/dist'))
 
-// Error-handler
+// Middleware para erros
 app.use((err, req, res, next) => {
     console.error(err.stack)
     res.status(500).send('Erro! Algo deu errado...')
@@ -38,10 +40,13 @@ app.get('/employees', (req, res) => {
     loader.do()
 })
 
+app.get('/', (req, res) => 
+    res.sendFile(path.join(__dirname, '../client/dist', 'index.html'))
+)
 
 controller.onReady = () => {   
     
-    app.listen(3000, () => {
+    app.listen(8080, () => {
         console.log('ouvindo')
     })
 }

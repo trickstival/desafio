@@ -6,24 +6,15 @@
     <div>
       <div class="error-card shadow-4 bg-white column items-center justify-center no-wrap">
         <q-icon name="error_outline" color="grey-5" />
-        <p class="caption text-center">Oops. Nothing here...</p>
+        <p class="caption text-center">Ops. Esse caminho não existe...</p>
         <p class="text-center group">
-          <q-btn
-            v-if="canGoBack"
-            color="primary"
-            push
-            @click="goBack"
-            icon="keyboard_arrow_left"
-          >
-            Go back
-          </q-btn>
           <q-btn
             color="primary"
             push
             @click="$router.replace('/')"
             icon-right="home"
           >
-            Go home
+            Ir para o cadastro
           </q-btn>
         </p>
       </div>
@@ -42,11 +33,6 @@ export default {
   data () {
     return {
       canGoBack: window.history.length > 1
-    }
-  },
-  methods: {
-    goBack () {
-      window.history.go(-1)
     }
   }
 }
