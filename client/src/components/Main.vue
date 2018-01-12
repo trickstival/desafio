@@ -1,10 +1,32 @@
 <script>
 import StTabelaParticipantes from '@/MainChildren/TabelaParticipantes.vue'
+import { EventBus } from '../EventBus'
 
 export default {
-  components: {
-      StTabelaParticipantes
-  }
+    components: {
+        StTabelaParticipantes
+    },
+    data(){
+        return {
+            data: []
+        }
+    },
+    methods: {
+    recarregar(){
+        let self = this
+        this.axios.get('http://localhost:8080/employees').then(response => {
+            for(let i=0;i<response.data.length;i++){
+                response.data[i].enumeration = i
+            }
+            self.data = response.data
+            console.log('resposta', response.data)
+        })
+    }
+    },
+    created(){
+        this.recarregar()
+        EventBus.$on('novoRegistro', () => this.recarregar())
+    }
 }
 </script>
 
@@ -18,7 +40,7 @@ export default {
         </h6>
         <div class="row main-content">
             <div class="col-lg-5 offset-lg-1">
-                <st-tabela-participantes slot="left" />
+                <st-tabela-participantes :data="data" slot="left" />
             </div>
         </div>
   </div>
